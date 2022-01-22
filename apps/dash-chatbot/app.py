@@ -11,7 +11,7 @@ import torch
 
 # device = "cuda" if torch.cuda.is_available() else "cpu"
 device = "cpu"
-print(f"Device: {device}")
+print("Device: {device}")
 
 print("Start loading model...")
 name = "microsoft/DialoGPT-medium"
