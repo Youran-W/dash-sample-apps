@@ -7,11 +7,12 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from transformers import AutoModelWithLMHead, AutoTokenizer
 import torch
+import base64
 
 
 # device = "cuda" if torch.cuda.is_available() else "cpu"
 device = "cpu"
-print("Device: {device}")
+print(f"Device: {device}")
 
 print("Start loading model...")
 name = "microsoft/DialoGPT-medium"
@@ -54,7 +55,6 @@ def textbox(text, box="other"):
 
     return dbc.Card(text, style=style, body=True, color=color, inverse=inverse)
 
-
 conversation = html.Div(
     style={
         "width": "80%",
@@ -79,12 +79,12 @@ controls = dbc.InputGroup(
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
-
 # Define Layout
 app.layout = dbc.Container(
     fluid=True,
     children=[
-        html.H1("Dash Chatbot (with DialoGPT)"),
+        html.H1("Dash Chatbot (with DialoGPT) - Youran"),
+        html.Img(src='/assets/icon.png', height="50px"),
         html.Hr(),
         dcc.Store(id="store-conversation", data=""),
         conversation,
